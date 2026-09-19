@@ -30,9 +30,11 @@ SHA-256 checksum beside it.
 ## GitHub Actions build
 
 The `Build Arkovia OS ISO` workflow runs automatically when build-related files
-change on `main`. It can also be started manually from the Actions page. A
-successful run stores the ISO and SHA-256 checksum together as a downloadable
-workflow artifact for 14 days.
+change on `main`. It can also be started manually from the Actions page. The
+build runs inside an official privileged Debian Trixie container so its
+`live-build` version matches the target distribution. A successful run stores
+the ISO and SHA-256 checksum together as a downloadable workflow artifact for
+14 days.
 
 The workflow artifact is a developer test image, not an Arkovia OS release.
 Public releases require the Phase 1 boot tests and later release gates.

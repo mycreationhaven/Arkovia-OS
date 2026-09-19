@@ -25,16 +25,16 @@ jobs:
       - name: Check out source
         uses: actions/checkout@v4
 
-      - name: Install image-build dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install --no-install-recommends live-build xorriso
-
       - name: Validate repository
         run: ./scripts/validate.sh
 
-      - name: Build ISO
-        run: sudo ./scripts/build-iso.sh
+      - name: Build ISO in Debian Trixie
+        run: |
+          docker run --rm --privileged \
+            -v "$GITHUB_WORKSPACE:/work" \
+            -w /work \
+            debian:trixie \
+            bash -lc 'apt-get update && apt-get install -y --no-install-recommends live-build xorriso ca-certificates && ./scripts/build-iso.sh'
 
       - name: Display output
         run: |
@@ -51,4 +51,3 @@ jobs:
           if-no-files-found: error
           compression-level: 0
           retention-days: 14
-
