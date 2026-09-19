@@ -1,0 +1,9 @@
+NAME="Arkovia OS"
+VERSION="Developer Preview"
+ID=arkovia
+ID_LIKE=debian
+PRETTY_NAME="Arkovia OS Developer Preview"
+HOME_URL="https://github.com/mycreationhaven/Arkovia-OS"
+SUPPORT_URL="https://github.com/mycreationhaven/Arkovia-OS/issues"
+BUG_REPORT_URL="https://github.com/mycreationhaven/Arkovia-OS/issues"
+

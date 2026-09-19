@@ -1,0 +1,7 @@
+# Candidate packages for the Minimal / Older PC profile.
+# These are not yet automatically consumed by the ISO build.
+mousepad
+ristretto
+atril
+parole
+

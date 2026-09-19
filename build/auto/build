@@ -1,0 +1,5 @@
+#!/bin/sh
+set -eu
+
+lb build 2>&1 | tee build.log
+
