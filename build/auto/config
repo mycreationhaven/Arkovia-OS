@@ -11,9 +11,8 @@ lb config noauto \
   --apt-recommends false \
   --bootloaders "syslinux grub-efi" \
   --bootappend-live "boot=live components quiet splash username=arkovia hostname=arkovia" \
-  --image-name "arkovia-os-developer-preview-amd64" \
+  --image-name "arkovia-os-developer-preview" \
   --iso-application "Arkovia OS Developer Preview" \
   --iso-publisher "Arkovia OS Project" \
   --iso-volume "ARKOVIA_OS" \
   "${@}"
-

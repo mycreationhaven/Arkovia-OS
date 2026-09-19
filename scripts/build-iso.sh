@@ -24,7 +24,6 @@ if [ -z "$iso" ]; then
   exit 1
 fi
 
-sha256sum "$iso" > "$iso.sha256"
+(cd "$(dirname "$iso")" && sha256sum "$(basename "$iso")" > "$(basename "$iso").sha256")
 echo "Created $iso"
 echo "Created $iso.sha256"
-
