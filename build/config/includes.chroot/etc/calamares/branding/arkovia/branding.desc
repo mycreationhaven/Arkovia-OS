@@ -1,0 +1,24 @@
+---
+componentName: arkovia
+welcomeStyleCalamares: true
+strings:
+    productName:         Arkovia OS
+    shortProductName:    Arkovia OS
+    version:             0.1 Developer Preview
+    shortVersion:        0.1
+    versionedName:       Arkovia OS 0.1 Developer Preview
+    shortVersionedName:  Arkovia OS 0.1
+    bootloaderEntryName: Arkovia OS
+    productUrl:          https://github.com/mycreationhaven/Arkovia-OS
+    supportUrl:          https://github.com/mycreationhaven/Arkovia-OS/issues
+    knownIssuesUrl:      https://github.com/mycreationhaven/Arkovia-OS/issues
+    releaseNotesUrl:     https://github.com/mycreationhaven/Arkovia-OS
+images:
+    productLogo:         arkovia-logo.png
+    productIcon:         arkovia-logo.png
+    productWelcome:      arkovia-welcome.jpg
+slideshow:               show.qml
+style:
+    sidebarBackground:   "#102a43"
+    sidebarText:         "#ffffff"
+    sidebarTextSelect:   "#f4c866"

@@ -4,7 +4,7 @@
     <property name="screen0" type="empty">
       <property name="monitor0" type="empty">
         <property name="workspace0" type="empty">
-          <property name="last-image" type="string" value="/usr/share/backgrounds/arkovia/arkovia-default.svg"/>
+          <property name="last-image" type="string" value="/usr/share/backgrounds/arkovia/theme-ocean-wildlife.jpg"/>
           <property name="image-style" type="int" value="5"/>
         </property>
       </property>

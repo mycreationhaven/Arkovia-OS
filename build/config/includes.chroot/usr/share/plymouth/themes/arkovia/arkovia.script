@@ -1,0 +1,48 @@
+screen_width = Window.GetWidth();
+screen_height = Window.GetHeight();
+
+background.image = Image("background.png");
+background.image = background.image.Scale(screen_width, screen_height);
+background.sprite = Sprite(background.image);
+background.sprite.SetZ(-100);
+
+mark.image = Image("arkovia-logo.png");
+mark.image = mark.image.Scale(150, 150);
+mark.sprite = Sprite(mark.image);
+mark.sprite.SetX(screen_width / 2 - 75);
+mark.sprite.SetY(screen_height / 2 - 150);
+
+title.image = Image.Text("ARKOVIA OS", 1.0, 1.0, 1.0);
+title.sprite = Sprite(title.image);
+title.sprite.SetX(screen_width / 2 - title.image.GetWidth() / 2);
+title.sprite.SetY(screen_height / 2 + 20);
+
+message.image = Image.Text("Starting your world...", 0.86, 0.91, 0.96);
+message.sprite = Sprite(message.image);
+message.sprite.SetX(screen_width / 2 - message.image.GetWidth() / 2);
+message.sprite.SetY(screen_height / 2 + 64);
+
+dot.image = Image("dot.png");
+for (index = 0; index < 5; index++) {
+  dots[index].sprite = Sprite(dot.image);
+  dots[index].sprite.SetX(screen_width / 2 - 54 + index * 24);
+  dots[index].sprite.SetY(screen_height / 2 + 108);
+}
+
+fun refresh_callback () {
+  time = Plymouth.GetTime();
+  for (index = 0; index < 5; index++) {
+    glow = 0.22 + 0.78 * Math.Abs(Math.Sin(time * 2.2 - index * 0.62));
+    dots[index].sprite.SetOpacity(glow);
+  }
+}
+
+Plymouth.SetRefreshFunction(refresh_callback);
+
+fun message_callback (text) {
+  message.image = Image.Text(text, 0.86, 0.91, 0.96);
+  message.sprite.SetImage(message.image);
+  message.sprite.SetX(screen_width / 2 - message.image.GetWidth() / 2);
+}
+
+Plymouth.SetMessageFunction(message_callback);

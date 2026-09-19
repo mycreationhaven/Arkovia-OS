@@ -12,6 +12,7 @@
 
 - [x] Build the first internal ISO through GitHub Actions
 - [x] Add the first desktop and login-screen branding
+- [x] Add full visible Arkovia identity, animated boot branding, and themed wallpapers
 - [x] Configure the hybrid live USB build path
 - [x] Add automated ISO checks for UEFI and supported legacy-BIOS boot metadata
 - Validate real UEFI and supported legacy-BIOS boots in virtual machines

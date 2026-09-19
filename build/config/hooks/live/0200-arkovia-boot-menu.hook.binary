@@ -1,0 +1,27 @@
+#!/bin/sh
+set -eu
+
+for config in binary/isolinux/*.cfg binary/boot/grub/*.cfg binary/EFI/boot/*.cfg; do
+  [ -f "$config" ] || continue
+  sed -i \
+    -e 's/Debian GNU\/Linux/Arkovia OS/g' \
+    -e 's/Debian Live/Arkovia OS Live/g' \
+    -e 's/Debian Installer/Arkovia OS Installer/g' \
+    -e 's/Debian/Arkovia OS/g' \
+    -e 's/splash\.svg/arkovia-background.png/g' \
+    "$config"
+done
+
+if [ -d binary/isolinux ]; then
+  cp chroot/usr/share/plymouth/themes/arkovia/background.png \
+    binary/isolinux/arkovia-background.png
+fi
+
+if [ -d binary/boot/grub ]; then
+  cp chroot/usr/share/plymouth/themes/arkovia/background.png \
+    binary/boot/grub/arkovia-background.png
+  for config in binary/boot/grub/*.cfg; do
+    [ -f "$config" ] || continue
+    sed -i '1i insmod png\nbackground_image /boot/grub/arkovia-background.png' "$config"
+  done
+fi

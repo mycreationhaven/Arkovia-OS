@@ -1,0 +1,14 @@
+#!/bin/sh
+set -eu
+
+plymouth-set-default-theme arkovia
+update-initramfs -u
+
+settings=/etc/calamares/settings.conf
+if [ -f "$settings" ]; then
+  if grep -q '^branding:' "$settings"; then
+    sed -i 's/^branding:.*/branding: arkovia/' "$settings"
+  else
+    printf '\nbranding: arkovia\n' >> "$settings"
+  fi
+fi

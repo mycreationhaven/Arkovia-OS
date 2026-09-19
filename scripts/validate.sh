@@ -13,6 +13,20 @@ build/auto/build
 build/auto/clean
 build/config/package-lists/arkovia-core.list.chroot
 build/config/includes.chroot/usr/share/backgrounds/arkovia/arkovia-default.svg
+build/config/includes.chroot/usr/share/backgrounds/arkovia/theme-ocean-wildlife.jpg
+build/config/includes.chroot/usr/share/backgrounds/arkovia/theme-space.jpg
+build/config/includes.chroot/usr/share/backgrounds/arkovia/theme-forest-wildlife.jpg
+build/config/includes.chroot/usr/share/backgrounds/arkovia/theme-around-the-world.jpg
+build/config/includes.chroot/usr/share/plymouth/themes/arkovia/arkovia.plymouth
+build/config/includes.chroot/usr/share/plymouth/themes/arkovia/arkovia.script
+build/config/includes.chroot/usr/share/plymouth/themes/arkovia/dot.png
+build/config/includes.chroot/etc/plymouth/plymouthd.conf
+build/config/includes.chroot/etc/os-release
+build/config/includes.chroot/etc/lsb-release
+build/config/includes.chroot/etc/default/grub.d/60-arkovia.cfg
+build/config/includes.chroot/etc/calamares/branding/arkovia/branding.desc
+build/config/hooks/live/0100-arkovia-branding.hook.chroot
+build/config/hooks/live/0200-arkovia-boot-menu.hook.binary
 build/config/includes.chroot/etc/lightdm/lightdm-gtk-greeter.conf.d/60-arkovia.conf
 build/config/includes.chroot/etc/apt/apt.conf.d/20auto-upgrades
 build/config/includes.chroot/etc/apt/apt.conf.d/52arkovia-updates
@@ -27,6 +41,7 @@ docs/BUILDING.md
 docs/APP-CATALOG.md
 docs/ROADMAP.md
 docs/UPDATES.md
+branding/WALLPAPERS.md
 testing/hardware-matrix.md
 "
 
@@ -51,7 +66,19 @@ if ! grep -q 'ARKOVIA OS' "$project_root/build/config/includes.chroot/usr/share/
   errors=$((errors + 1))
 fi
 
-for script in "$project_root"/scripts/*.sh "$project_root"/build/auto/*; do
+if ! grep -q '^PRETTY_NAME="Arkovia OS' "$project_root/build/config/includes.chroot/etc/os-release"; then
+  echo "Visible operating-system identity is not branded as Arkovia OS." >&2
+  errors=$((errors + 1))
+fi
+
+if grep -Eqi '^((NAME|PRETTY_NAME|DISTRIB_DESCRIPTION)=.*Debian)' \
+  "$project_root/build/config/includes.chroot/etc/os-release" \
+  "$project_root/build/config/includes.chroot/etc/lsb-release"; then
+  echo "Visible operating-system identity still contains Debian branding." >&2
+  errors=$((errors + 1))
+fi
+
+for script in "$project_root"/scripts/*.sh "$project_root"/build/auto/* "$project_root"/build/config/hooks/live/*; do
   [ -f "$script" ] || continue
   if ! sh -n "$script"; then
     errors=$((errors + 1))

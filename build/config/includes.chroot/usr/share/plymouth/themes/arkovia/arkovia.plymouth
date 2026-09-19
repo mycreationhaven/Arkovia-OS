@@ -1,0 +1,8 @@
+[Plymouth Theme]
+Name=Arkovia OS
+Description=Animated Arkovia OS sunrise theme
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/arkovia
+ScriptFile=/usr/share/plymouth/themes/arkovia/arkovia.script

@@ -20,6 +20,8 @@ Linux users learn complicated system administration.
 - Useful offline operation for essential features
 - Old-PC Performance Mode and measured low-spec hardware targets
 - Accessible, plain-language setup, updates, backup, and recovery
+- Arkovia-branded boot, login, installer, and desktop experience
+- Ocean Wildlife, Space, Forest Wildlife, and Around the World wallpapers
 - Daily Debian update checks with graphical notifications and automatic trusted security updates
 
 ## Setup profiles

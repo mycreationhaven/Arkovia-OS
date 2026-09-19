@@ -47,7 +47,7 @@ for id in $selection; do
     churchcrm) open_churchcrm=true ;;
     chrome)
       if yad --question --title="Google Chrome" \
-        --text="Google Chrome is proprietary third-party software. Installing it downloads Google's official Debian package and adds Google's signed software repository for future updates.\n\nContinue?" \
+        --text="Google Chrome is proprietary third-party software. Installing it downloads Google's official Linux package and adds Google's signed software repository for future updates.\n\nContinue?" \
         --button="Install Chrome:0" --button="Skip Chrome:1"; then
         install_ids="$install_ids chrome"
       fi

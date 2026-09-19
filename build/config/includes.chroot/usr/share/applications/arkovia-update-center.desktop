@@ -8,5 +8,5 @@ Icon=system-software-update
 Exec=gpk-update-viewer
 Terminal=false
 Categories=System;Settings;PackageManager;
-Keywords=updates;security;software;packages;Debian;
+Keywords=updates;security;software;packages;Arkovia;
 StartupNotify=true

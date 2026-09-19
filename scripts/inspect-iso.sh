@@ -54,12 +54,24 @@ xorriso -osirrox on -indev "$iso" \
 echo "Checking Arkovia identity and branding..."
 for path in \
   etc/arkovia-release \
+  etc/os-release \
+  etc/lsb-release \
+  etc/default/grub.d/60-arkovia.cfg \
+  etc/plymouth/plymouthd.conf \
+  etc/calamares/settings.conf \
+  etc/calamares/branding/arkovia/branding.desc \
   etc/apt/apt.conf.d/20auto-upgrades \
   etc/apt/apt.conf.d/52arkovia-updates \
   etc/lightdm/lightdm-gtk-greeter.conf.d/60-arkovia.conf \
   usr/local/bin/arkovia-app-catalog \
   usr/local/sbin/arkovia-install-apps \
   usr/share/arkovia/app-catalog.tsv \
+  usr/share/plymouth/themes/arkovia/arkovia.plymouth \
+  usr/share/plymouth/themes/arkovia/arkovia.script \
+  usr/share/backgrounds/arkovia/theme-ocean-wildlife.jpg \
+  usr/share/backgrounds/arkovia/theme-space.jpg \
+  usr/share/backgrounds/arkovia/theme-forest-wildlife.jpg \
+  usr/share/backgrounds/arkovia/theme-around-the-world.jpg \
   usr/share/applications/arkovia-app-catalog.desktop \
   usr/share/applications/arkovia-update-center.desktop \
   usr/share/backgrounds/arkovia/arkovia-default.svg; do
@@ -72,6 +84,30 @@ done
 unsquashfs -cat "$work_dir/filesystem.squashfs" etc/arkovia-release \
   | grep -q '^PRETTY_NAME="Arkovia OS' || {
     echo "The live filesystem does not identify itself as Arkovia OS." >&2
+    exit 1
+  }
+
+unsquashfs -cat "$work_dir/filesystem.squashfs" etc/calamares/settings.conf \
+  | grep -q '^branding: arkovia' || {
+    echo "Calamares is not configured to use Arkovia branding." >&2
+    exit 1
+  }
+
+unsquashfs -cat "$work_dir/filesystem.squashfs" etc/plymouth/plymouthd.conf \
+  | grep -q '^Theme=arkovia' || {
+    echo "The animated Arkovia boot theme is not active." >&2
+    exit 1
+  }
+
+unsquashfs -cat "$work_dir/filesystem.squashfs" etc/os-release \
+  | grep -q '^PRETTY_NAME="Arkovia OS' || {
+    echo "The visible OS identity is not branded as Arkovia OS." >&2
+    exit 1
+  }
+
+unsquashfs -cat "$work_dir/filesystem.squashfs" etc/issue \
+  | grep -q '^Arkovia OS' || {
+    echo "The console identity is not branded as Arkovia OS." >&2
     exit 1
   }
 
