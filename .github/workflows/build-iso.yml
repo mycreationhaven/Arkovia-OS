@@ -6,7 +6,7 @@ on:
     branches: [main]
     paths:
       - "build/**"
-      - "scripts/build-iso.sh"
+      - "scripts/*.sh"
       - ".github/workflows/build-iso.yml"
 
 permissions:
@@ -34,7 +34,7 @@ jobs:
             -v "$GITHUB_WORKSPACE:/work" \
             -w /work \
             debian:trixie \
-            bash -lc 'apt-get update && apt-get install -y --no-install-recommends live-build xorriso ca-certificates && ./scripts/build-iso.sh'
+            bash -lc 'apt-get update && apt-get install -y --no-install-recommends live-build xorriso squashfs-tools ca-certificates && ./scripts/build-iso.sh && ./scripts/inspect-iso.sh build/*.iso'
 
       - name: Display output
         run: |

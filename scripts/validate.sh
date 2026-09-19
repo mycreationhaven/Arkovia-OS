@@ -14,6 +14,7 @@ build/auto/clean
 build/config/package-lists/arkovia-core.list.chroot
 build/config/includes.chroot/usr/share/backgrounds/arkovia/arkovia-default.svg
 build/config/includes.chroot/etc/lightdm/lightdm-gtk-greeter.conf.d/60-arkovia.conf
+scripts/inspect-iso.sh
 docs/ARCHITECTURE.md
 docs/BUILDING.md
 docs/ROADMAP.md
