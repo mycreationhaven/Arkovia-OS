@@ -82,7 +82,8 @@ The project is in **Phase 0 — Foundation**:
 - [x] Initial repository structure established
 - [x] Reproducible live-build foundation added
 - [x] Initial Arkovia wallpaper and login-screen branding added
-- [ ] First ISO built and tested in a virtual machine
+- [x] First bootable Developer Preview ISO built
+- [ ] Developer Preview ISO tested in UEFI and legacy-BIOS virtual machines
 - [ ] Installer and Welcome Center prototypes completed
 - [ ] Old-PC performance measurements collected
 

@@ -10,7 +10,7 @@
 
 ## Phase 1 — First boot
 
-- [ ] Build the first internal ISO through GitHub Actions
+- [x] Build the first internal ISO through GitHub Actions
 - [x] Add the first desktop and login-screen branding
 - [x] Configure the hybrid live USB build path
 - Validate UEFI and supported legacy-BIOS boot paths
