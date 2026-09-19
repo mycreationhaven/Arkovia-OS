@@ -17,6 +17,9 @@ cups
 system-config-printer
 printer-driver-all
 fwupd
+unattended-upgrades
+package-update-indicator
+gnome-package-updater
 firefox-esr
 mousepad
 ristretto

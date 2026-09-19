@@ -14,10 +14,14 @@ build/auto/clean
 build/config/package-lists/arkovia-core.list.chroot
 build/config/includes.chroot/usr/share/backgrounds/arkovia/arkovia-default.svg
 build/config/includes.chroot/etc/lightdm/lightdm-gtk-greeter.conf.d/60-arkovia.conf
+build/config/includes.chroot/etc/apt/apt.conf.d/20auto-upgrades
+build/config/includes.chroot/etc/apt/apt.conf.d/52arkovia-updates
+build/config/includes.chroot/usr/share/applications/arkovia-update-center.desktop
 scripts/inspect-iso.sh
 docs/ARCHITECTURE.md
 docs/BUILDING.md
 docs/ROADMAP.md
+docs/UPDATES.md
 testing/hardware-matrix.md
 "
 

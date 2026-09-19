@@ -20,6 +20,7 @@ Linux users learn complicated system administration.
 - Useful offline operation for essential features
 - Old-PC Performance Mode and measured low-spec hardware targets
 - Accessible, plain-language setup, updates, backup, and recovery
+- Daily Debian update checks with graphical notifications and automatic trusted security updates
 
 ## Setup profiles
 
@@ -73,6 +74,9 @@ sudo ./scripts/build-iso.sh
 
 Build output is written beneath `build/`. See [docs/BUILDING.md](docs/BUILDING.md)
 for prerequisites, cleanup, validation, and test instructions.
+
+Arkovia's update behavior and safety defaults are documented in
+[docs/UPDATES.md](docs/UPDATES.md).
 
 ## Development status
 

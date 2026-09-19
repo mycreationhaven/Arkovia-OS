@@ -54,7 +54,10 @@ xorriso -osirrox on -indev "$iso" \
 echo "Checking Arkovia identity and branding..."
 for path in \
   etc/arkovia-release \
+  etc/apt/apt.conf.d/20auto-upgrades \
+  etc/apt/apt.conf.d/52arkovia-updates \
   etc/lightdm/lightdm-gtk-greeter.conf.d/60-arkovia.conf \
+  usr/share/applications/arkovia-update-center.desktop \
   usr/share/backgrounds/arkovia/arkovia-default.svg; do
   if ! unsquashfs -cat "$work_dir/filesystem.squashfs" "$path" >/dev/null 2>&1; then
     echo "Missing live-filesystem file: /$path" >&2
@@ -70,7 +73,7 @@ unsquashfs -cat "$work_dir/filesystem.squashfs" etc/arkovia-release \
 
 echo "Checking desktop, browser, and installer packages..."
 unsquashfs -cat "$work_dir/filesystem.squashfs" var/lib/dpkg/status >"$work_dir/dpkg-status"
-for package in xfce4 lightdm calamares firefox-esr; do
+for package in xfce4 lightdm calamares firefox-esr unattended-upgrades package-update-indicator gnome-package-updater; do
   if ! awk -v package="$package" '
     $1 == "Package:" { current = $2 }
     current == package && $0 == "Status: install ok installed" { found = 1 }

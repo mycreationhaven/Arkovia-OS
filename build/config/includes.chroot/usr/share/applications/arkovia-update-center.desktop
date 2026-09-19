@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Arkovia Update Center
+GenericName=Software Updates
+Comment=Check for and install software and security updates
+Icon=system-software-update
+Exec=gpk-update-viewer
+Terminal=false
+Categories=System;Settings;PackageManager;
+Keywords=updates;security;software;packages;Debian;
+StartupNotify=true

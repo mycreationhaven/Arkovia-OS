@@ -19,6 +19,8 @@
 
 ## Phase 2 — Friendly setup
 
+- [x] Add graphical update notifications and an Arkovia Update Center
+- [x] Enable safe automatic Debian Stable and Security updates
 - Brand and simplify the graphical installer
 - Create the Arkovia Welcome Center
 - Implement reversible setup profiles

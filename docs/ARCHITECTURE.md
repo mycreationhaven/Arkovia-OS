@@ -24,6 +24,7 @@
 | Audio | PipeWire and WirePlumber |
 | Image tooling | Debian live-build |
 | Application delivery | Debian packages first; optional Flatpak later |
+| Updates | Daily Debian checks, graphical notifications, unattended trusted Stable and Security updates |
 
 ## Design constraints
 
@@ -39,4 +40,3 @@
 Arkovia OS begins as a monorepo so build recipes, documentation, profiles, and
 tests can evolve together. Components may move to separate repositories after
 they gain independent release cycles.
-
