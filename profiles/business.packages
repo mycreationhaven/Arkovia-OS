@@ -1,6 +1,7 @@
-# Candidate additions for the Business profile.
-# These are not yet automatically consumed by the ISO build.
+# Optional online selections. These packages are not included in the ISO.
 libreoffice
-simple-scan
-remmina
+thunderbird
+7zip
 
+# Google Chrome is downloaded from Google's official HTTPS Debian package only
+# after the user accepts the third-party software notice in the app catalog.

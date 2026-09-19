@@ -1,0 +1,14 @@
+# profile	id	name	kind	payload	description
+church	churchcrm	ChurchCRM	guide	https://docs.churchcrm.io/	Church management for members, groups, events, and finances (guided server setup)
+church	openlp	OpenLP	apt	openlp	Worship presentation software for songs, Scripture, images, and video
+business	libreoffice	LibreOffice	apt	libreoffice	Private office suite for documents, spreadsheets, and presentations
+business	thunderbird	Thunderbird	apt	thunderbird	Email, calendar, contacts, and news client
+business	7zip	7-Zip	apt	7zip	Create and extract compressed archives
+business	chrome	Google Chrome	chrome	google-chrome-stable	Proprietary web browser from Google (adds Google's signed repository)
+home	krita	Krita	apt	krita	Digital painting and creative artwork
+home	vlc	VLC Media Player	apt	vlc	Video, music, disc, and streaming media player
+home	stellarium	Stellarium	apt	stellarium	Interactive planetarium and night-sky viewer
+home	pysolfc	PySolFC	apt	pysolfc	Large collection of solitaire card games
+home	supertuxkart	SuperTuxKart	apt	supertuxkart	Family-friendly 3D kart racing game
+home	0ad	0 A.D.	apt	0ad	Historical real-time strategy game
+home	kiwix	Kiwix	apt	kiwix	Read downloaded educational and reference libraries offline

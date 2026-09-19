@@ -21,6 +21,7 @@
 
 - [x] Add graphical update notifications and an Arkovia Update Center
 - [x] Enable safe automatic Debian Stable and Security updates
+- [x] Add an online, opt-in App Catalog for Home, Business, and Church profiles
 - Brand and simplify the graphical installer
 - Create the Arkovia Welcome Center
 - Implement reversible setup profiles

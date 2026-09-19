@@ -12,6 +12,12 @@ The first implementation will cover:
 - Minimal / Older PC
 - Custom
 
-Profile definitions must distinguish required packages from recommendations so
-older systems are not burdened with unnecessary background services.
+Profile definitions distinguish required packages from recommendations so
+older systems are not burdened with unnecessary background services. The
+listed profile applications are online, opt-in selections: they are neither
+installed nor embedded in the ISO. The Arkovia App Catalog downloads a choice
+only after the user selects it and authorizes installation.
 
+ChurchCRM is intentionally handled as a guided server setup rather than a
+desktop package because it requires choices about hosting, database security,
+backups, and access to sensitive church records.

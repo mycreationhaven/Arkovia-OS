@@ -1,0 +1,85 @@
+#!/bin/sh
+set -eu
+
+catalog=/usr/share/arkovia/app-catalog.tsv
+
+if [ ! -r "$catalog" ]; then
+  yad --error --title="Arkovia App Catalog" --text="The application catalog could not be found."
+  exit 1
+fi
+
+profile=$(yad --list --radiolist \
+  --title="Arkovia App Catalog" \
+  --text="Choose what you use this computer for. Nothing is installed until you select it." \
+  --width=620 --height=390 --center \
+  --column="Choose":RAD --column="Profile" --column="Profile ID":HD \
+  TRUE "Home & Family" home \
+  FALSE "Business" business \
+  FALSE "Church & Ministry" church \
+  --print-column=3 --separator='' --button="Continue:0" --button="Close:1") || exit 0
+
+set --
+tab=$(printf '\t')
+while IFS="$tab" read -r row_profile id name kind payload description; do
+  case "$row_profile" in ''|'#'*) continue ;; esac
+  [ "$row_profile" = "$profile" ] || continue
+  set -- "$@" FALSE "$name" "$description" "$id"
+done < "$catalog"
+
+selection=$(yad --list --checklist \
+  --title="Arkovia App Catalog — $profile" \
+  --text="Select only the applications you want. Internet access is required. Downloads are not stored in the Arkovia OS image." \
+  --width=900 --height=520 --center --multiple --separator='|' \
+  --column="Install":CHK --column="Application" --column="What it does" --column="ID":HD \
+  "$@" --print-column=4 --button="Install / Set Up Selected:0" --button="Cancel:1") || exit 0
+
+[ -n "$selection" ] || {
+  yad --info --title="Arkovia App Catalog" --text="No applications were selected."
+  exit 0
+}
+
+install_ids=
+open_churchcrm=false
+old_ifs=$IFS
+IFS='|'
+for id in $selection; do
+  case "$id" in
+    churchcrm) open_churchcrm=true ;;
+    chrome)
+      if yad --question --title="Google Chrome" \
+        --text="Google Chrome is proprietary third-party software. Installing it downloads Google's official Debian package and adds Google's signed software repository for future updates.\n\nContinue?" \
+        --button="Install Chrome:0" --button="Skip Chrome:1"; then
+        install_ids="$install_ids chrome"
+      fi
+      ;;
+    libreoffice|thunderbird|7zip|openlp|krita|vlc|stellarium|pysolfc|supertuxkart|0ad|kiwix)
+      install_ids="$install_ids $id"
+      ;;
+  esac
+done
+IFS=$old_ifs
+
+if [ -n "$install_ids" ]; then
+  if ! nm-online -x -q --timeout=15; then
+    yad --error --title="Internet connection required" \
+      --text="Arkovia could not confirm an internet connection. Connect to the internet and try again."
+    exit 1
+  fi
+
+  # Word splitting is intentional: every value has been selected from the
+  # fixed identifier allowlist above and is checked again by the root helper.
+  if pkexec /usr/local/sbin/arkovia-install-apps $install_ids; then
+    yad --info --title="Arkovia App Catalog" \
+      --text="Your selected applications were installed successfully."
+  else
+    yad --error --title="Installation did not finish" \
+      --text="One or more applications could not be installed. Check your connection and available disk space, then try again."
+  fi
+fi
+
+if [ "$open_churchcrm" = true ]; then
+  yad --info --title="ChurchCRM guided setup" \
+    --text="ChurchCRM stores sensitive membership and financial information and requires a web server, database, backups, and security configuration. Arkovia will open the official setup guide so the church can choose an appropriate local or hosted installation." \
+    --button="Open Official Guide:0"
+  xdg-open 'https://docs.churchcrm.io/' >/dev/null 2>&1 &
+fi

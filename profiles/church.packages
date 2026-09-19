@@ -1,5 +1,6 @@
-# Candidate additions for the Church & Ministry profile.
-# These are not yet automatically consumed by the ISO build.
-libreoffice-impress
-obs-studio
+# Optional online selections. These packages are not included in the ISO.
+openlp
 
+# ChurchCRM is a server-based web application. The catalog opens its official
+# guided setup documentation instead of silently deploying a database server.
+# https://docs.churchcrm.io/

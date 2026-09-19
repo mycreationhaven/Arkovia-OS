@@ -1,0 +1,41 @@
+#!/bin/sh
+set -eu
+
+if [ "$(id -u)" -ne 0 ]; then
+  echo "This helper must be run through system authorization." >&2
+  exit 1
+fi
+
+[ "$#" -gt 0 ] || exit 0
+
+packages=
+install_chrome=false
+for id in "$@"; do
+  case "$id" in
+    libreoffice|thunderbird|7zip|openlp|krita|vlc|stellarium|pysolfc|supertuxkart|0ad|kiwix)
+      packages="$packages $id"
+      ;;
+    chrome) install_chrome=true ;;
+    *)
+      echo "Unsupported application identifier: $id" >&2
+      exit 2
+      ;;
+  esac
+done
+
+export DEBIAN_FRONTEND=noninteractive
+apt-get update
+
+if [ -n "$packages" ]; then
+  # Values come exclusively from the fixed allowlist above.
+  apt-get install -y $packages
+fi
+
+if [ "$install_chrome" = true ]; then
+  temp_dir=$(mktemp -d)
+  trap 'rm -rf "$temp_dir"' EXIT HUP INT TERM
+  curl --fail --location --proto '=https' --tlsv1.2 \
+    --output "$temp_dir/google-chrome-stable_current_amd64.deb" \
+    'https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb'
+  apt-get install -y "$temp_dir/google-chrome-stable_current_amd64.deb"
+fi

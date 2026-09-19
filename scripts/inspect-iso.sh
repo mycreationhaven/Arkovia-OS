@@ -57,6 +57,10 @@ for path in \
   etc/apt/apt.conf.d/20auto-upgrades \
   etc/apt/apt.conf.d/52arkovia-updates \
   etc/lightdm/lightdm-gtk-greeter.conf.d/60-arkovia.conf \
+  usr/local/bin/arkovia-app-catalog \
+  usr/local/sbin/arkovia-install-apps \
+  usr/share/arkovia/app-catalog.tsv \
+  usr/share/applications/arkovia-app-catalog.desktop \
   usr/share/applications/arkovia-update-center.desktop \
   usr/share/backgrounds/arkovia/arkovia-default.svg; do
   if ! unsquashfs -cat "$work_dir/filesystem.squashfs" "$path" >/dev/null 2>&1; then
@@ -73,13 +77,25 @@ unsquashfs -cat "$work_dir/filesystem.squashfs" etc/arkovia-release \
 
 echo "Checking desktop, browser, and installer packages..."
 unsquashfs -cat "$work_dir/filesystem.squashfs" var/lib/dpkg/status >"$work_dir/dpkg-status"
-for package in xfce4 lightdm calamares firefox-esr unattended-upgrades package-update-indicator gnome-package-updater; do
+for package in xfce4 lightdm calamares firefox-esr unattended-upgrades package-update-indicator gnome-package-updater yad; do
   if ! awk -v package="$package" '
     $1 == "Package:" { current = $2 }
     current == package && $0 == "Status: install ok installed" { found = 1 }
     END { exit found ? 0 : 1 }
   ' "$work_dir/dpkg-status"; then
     echo "Required package is not installed in the live filesystem: $package" >&2
+    exit 1
+  fi
+done
+
+echo "Checking that optional profile applications are not bundled..."
+for package in openlp libreoffice thunderbird 7zip krita vlc stellarium pysolfc supertuxkart 0ad kiwix google-chrome-stable; do
+  if awk -v package="$package" '
+    $1 == "Package:" { current = $2 }
+    current == package && $0 == "Status: install ok installed" { found = 1 }
+    END { exit found ? 0 : 1 }
+  ' "$work_dir/dpkg-status"; then
+    echo "Optional application was unexpectedly bundled in the ISO: $package" >&2
     exit 1
   fi
 done

@@ -20,6 +20,7 @@ fwupd
 unattended-upgrades
 package-update-indicator
 gnome-package-updater
+yad
 firefox-esr
 mousepad
 ristretto

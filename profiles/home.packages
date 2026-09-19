@@ -1,6 +1,8 @@
-# Candidate additions for the Home & Family profile.
-# These are not yet automatically consumed by the ISO build.
-libreoffice-writer
-libreoffice-calc
-simple-scan
-
+# Optional online selections. These packages are not included in the ISO.
+krita
+vlc
+stellarium
+pysolfc
+supertuxkart
+0ad
+kiwix

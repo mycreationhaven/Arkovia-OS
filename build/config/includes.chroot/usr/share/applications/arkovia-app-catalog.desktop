@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Arkovia App Catalog
+GenericName=Optional Applications
+Comment=Choose optional apps for home, business, or church use
+Icon=system-software-install
+Exec=arkovia-app-catalog
+Terminal=false
+Categories=System;Settings;PackageManager;
+Keywords=apps;software;home;business;church;optional;
+StartupNotify=true

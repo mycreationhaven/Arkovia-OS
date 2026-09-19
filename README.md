@@ -34,7 +34,9 @@ Linux users learn complicated system administration.
 | Custom | Individually selected layouts, applications, and optional components |
 
 Profiles customize one operating system. They are not separately branded
-editions, and they will be designed so users can change them later.
+editions, and users can change them later. Recommended profile applications
+are not bundled in the ISO; the Arkovia App Catalog downloads only the choices
+the user explicitly selects while connected to the internet.
 
 ## Hardware targets
 
@@ -77,6 +79,9 @@ for prerequisites, cleanup, validation, and test instructions.
 
 Arkovia's update behavior and safety defaults are documented in
 [docs/UPDATES.md](docs/UPDATES.md).
+
+Optional profile recommendations and their online installation paths are
+documented in [docs/APP-CATALOG.md](docs/APP-CATALOG.md).
 
 ## Development status
 
