@@ -1,0 +1,54 @@
+name: Build Arkovia OS ISO
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "build/**"
+      - "scripts/build-iso.sh"
+      - ".github/workflows/build-iso.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: arkovia-iso-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Debian live-build
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Install image-build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install --no-install-recommends live-build xorriso
+
+      - name: Validate repository
+        run: ./scripts/validate.sh
+
+      - name: Build ISO
+        run: sudo ./scripts/build-iso.sh
+
+      - name: Display output
+        run: |
+          ls -lh build/*.iso build/*.sha256
+          sha256sum --check build/*.sha256
+
+      - name: Upload ISO and checksum
+        uses: actions/upload-artifact@v4
+        with:
+          name: arkovia-os-developer-preview-amd64
+          path: |
+            build/*.iso
+            build/*.sha256
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 14
+

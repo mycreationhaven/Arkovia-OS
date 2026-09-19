@@ -27,6 +27,16 @@ sudo ./scripts/build-iso.sh
 The script configures live-build, creates an ISO beneath `build/`, and writes a
 SHA-256 checksum beside it.
 
+## GitHub Actions build
+
+The `Build Arkovia OS ISO` workflow runs automatically when build-related files
+change on `main`. It can also be started manually from the Actions page. A
+successful run stores the ISO and SHA-256 checksum together as a downloadable
+workflow artifact for 14 days.
+
+The workflow artifact is a developer test image, not an Arkovia OS release.
+Public releases require the Phase 1 boot tests and later release gates.
+
 ## Clean
 
 ```bash
@@ -55,4 +65,3 @@ Writing an ISO to a USB drive destroys data on the selected drive. Verify the
 device identity and size immediately before using any imaging command. This
 project intentionally does not provide an automated USB-writing script during
 the foundation phase.
-

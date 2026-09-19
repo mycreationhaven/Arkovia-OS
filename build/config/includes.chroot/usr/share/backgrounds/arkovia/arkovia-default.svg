@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#102a43"/>
+      <stop offset="0.58" stop-color="#1f5f68"/>
+      <stop offset="1" stop-color="#d9a441"/>
+    </linearGradient>
+    <linearGradient id="land" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#173f46"/>
+      <stop offset="1" stop-color="#091b2a"/>
+    </linearGradient>
+    <radialGradient id="glow">
+      <stop offset="0" stop-color="#fff4c7" stop-opacity=".95"/>
+      <stop offset=".35" stop-color="#d9a441" stop-opacity=".6"/>
+      <stop offset="1" stop-color="#d9a441" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#sky)"/>
+  <circle cx="960" cy="540" r="330" fill="url(#glow)"/>
+  <path d="M0 750 230 590 420 710 690 430 925 690 1160 470 1430 720 1660 570 1920 760V1080H0Z" fill="#1b5660" opacity=".8"/>
+  <path d="M0 850 310 660 550 825 820 590 1100 820 1390 620 1630 790 1920 650V1080H0Z" fill="url(#land)"/>
+  <path d="M0 930C330 830 610 990 960 900s630 70 960-40v220H0Z" fill="#071522"/>
+  <g fill="#ffffff" text-anchor="middle" font-family="DejaVu Sans, sans-serif">
+    <text x="960" y="455" font-size="92" font-weight="700" letter-spacing="10">ARKOVIA OS</text>
+    <text x="960" y="520" font-size="30" opacity=".9" letter-spacing="2">SIMPLE ENOUGH FOR EVERYONE</text>
+    <text x="960" y="563" font-size="30" opacity=".9" letter-spacing="2">POWERFUL ENOUGH FOR ANYWHERE</text>
+  </g>
+</svg>

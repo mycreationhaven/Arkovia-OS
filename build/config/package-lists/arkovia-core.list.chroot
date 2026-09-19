@@ -1,7 +1,10 @@
 xfce4
 xfce4-goodies
+xfce4-whiskermenu-plugin
 lightdm
 lightdm-gtk-greeter
+plymouth
+plymouth-themes
 live-config
 live-config-systemd
 calamares
@@ -29,4 +32,3 @@ ca-certificates
 rsync
 inxi
 zram-tools
-

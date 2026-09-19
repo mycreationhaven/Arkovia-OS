@@ -81,7 +81,7 @@ The project is in **Phase 0 — Foundation**:
 - [x] Product vision and core audience defined
 - [x] Initial repository structure established
 - [x] Reproducible live-build foundation added
-- [ ] Arkovia visual identity assets finalized
+- [x] Initial Arkovia wallpaper and login-screen branding added
 - [ ] First ISO built and tested in a virtual machine
 - [ ] Installer and Welcome Center prototypes completed
 - [ ] Old-PC performance measurements collected
