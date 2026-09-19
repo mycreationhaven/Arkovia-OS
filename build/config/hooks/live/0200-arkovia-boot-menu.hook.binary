@@ -25,3 +25,14 @@ if [ -d binary/boot/grub ]; then
     sed -i '1i insmod png\nbackground_image /boot/grub/arkovia-background.png' "$config"
   done
 fi
+
+# A visible upstream name in a boot menu is a release-blocking branding bug.
+remaining_debian_labels=$(
+  find binary/isolinux binary/boot/grub binary/EFI/boot \
+    -type f -name '*.cfg' -exec grep -Il 'Debian' {} + 2>/dev/null || true
+)
+if [ -n "$remaining_debian_labels" ]; then
+  echo "Arkovia branding check failed; Debian remains in:" >&2
+  echo "$remaining_debian_labels" >&2
+  exit 1
+fi

@@ -24,6 +24,7 @@ build/config/includes.chroot/etc/plymouth/plymouthd.conf
 build/config/includes.chroot/etc/os-release
 build/config/includes.chroot/etc/lsb-release
 build/config/includes.chroot/etc/default/grub.d/60-arkovia.cfg
+build/config/includes.chroot/etc/calamares/settings.conf
 build/config/includes.chroot/etc/calamares/branding/arkovia/branding.desc
 build/config/hooks/live/0100-arkovia-branding.hook.chroot
 build/config/hooks/live/0200-arkovia-boot-menu.hook.binary
