@@ -27,6 +27,10 @@ server automatically.
 | 7-Zip | Debian package installed through APT |
 | Google Chrome | Official Google Debian package after a third-party notice |
 
+Arkovia's base desktop uses lightweight Xarchiver for ordinary archive tasks.
+Debian 13's File Roller package requires 7-Zip, so File Roller is deliberately
+not bundled; this keeps the full 7-Zip tool an honest optional selection.
+
 Chrome is proprietary software outside Debian. The user must explicitly accept
 a separate notice before Arkovia downloads it from Google's HTTPS distribution
 site. Google's package configures its signed repository for future updates.
